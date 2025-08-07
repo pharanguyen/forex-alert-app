@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cảnh báo & Biểu đồ Forex Real-time</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="page-header">
+            <h1 class="logo">Forex Dashboard</h1>
+            <div class="header-controls">
+                <button id="toggle-sidebar-btn" title="Danh sách theo dõi">
+                    <!-- SVG Icon cho danh sách -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M16 18v2H5v-2h11zm5-7v2H3v-2h18zm-2-7v2H8V4h11z"/></svg>
+                </button>
+            </div>
+        </header>
+        
+        <main class="main-content">
+            <!-- VÙNG BIỂU ĐỒ CHÍNH -->
+            <div class="chart-wrapper">
+                <div id="tradingview-chart-container"></div>
+            </div>
+
+            <!-- THANH BÊN PHẢI (SIDEBAR) -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-content">
+                    <div class="container" id="price-board">
+                        <h2>Bảng giá</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th style="text-align: right;">Giá</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="price-table-body"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="container" id="active-alerts">
+                        <h2>Cảnh báo</h2>
+                        <ul id="active-alerts-list"></ul>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

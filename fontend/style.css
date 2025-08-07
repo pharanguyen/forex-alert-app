@@ -1,0 +1,138 @@
+/* General Reset & Root Variables */
+:root {
+    --bg-main: #131722;
+    --bg-secondary: #1e222d;
+    --text-primary: #d1d4dc;
+    --text-secondary: #8c92a0;
+    --border-color: #2a2e39;
+    --accent-blue: #2962ff;
+    --price-up: #26a69a;
+    --price-down: #ef5350;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    overflow: hidden; /* Ngăn cuộn trang */
+}
+
+/* Page Structure */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 50px;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 1.2rem;
+}
+
+.header-controls button {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-controls button svg { fill: var(--text-secondary); }
+.header-controls button:hover { background-color: var(--border-color); }
+.header-controls button.active { background-color: var(--accent-blue); }
+.header-controls button.active svg { fill: white; }
+
+.main-content {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Ngăn cuộn nội dung chính */
+}
+
+/* Chart Area */
+.chart-wrapper {
+    flex-grow: 1;
+    height: 100%;
+}
+#tradingview-chart-container { height: 100%; }
+
+/* Sidebar (Right Panel) */
+.sidebar {
+    width: 380px;
+    height: 100%;
+    background-color: var(--bg-secondary);
+    border-left: 1px solid var(--border-color);
+    flex-shrink: 0;
+    transition: margin-right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.hidden {
+    margin-right: -380px; /* Di chuyển ra khỏi màn hình */
+}
+
+.sidebar-content {
+    padding: 15px;
+    overflow-y: auto; /* Cho phép cuộn khi nội dung dài */
+    flex-grow: 1;
+}
+
+.container { margin-bottom: 15px; }
+h2 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+}
+
+/* Price Board */
+#price-board table { width: 100%; border-collapse: collapse; }
+#price-board th { text-align: left; padding: 8px 0; font-size: 0.8rem; color: var(--text-secondary); }
+#price-board td { padding: 6px 0; vertical-align: middle; }
+#price-board tr { cursor: pointer; border-bottom: 1px solid var(--border-color); }
+#price-board tr:hover { background-color: var(--border-color); }
+.price { font-weight: 600; font-size: 0.9rem; padding: 4px 6px; border-radius: 3px; }
+.price-up { color: var(--price-up); background-color: rgba(38, 166, 154, 0.2); }
+.price-down { color: var(--price-down); background-color: rgba(239, 83, 80, 0.2); }
+.alert-button {
+    background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--text-secondary);
+    opacity: 0.7; transition: all 0.2s ease;
+}
+.alert-button:hover { color: var(--accent-blue); opacity: 1; }
+
+/* Active Alerts */
+#active-alerts ul { list-style: none; }
+#active-alerts li {
+    background-color: var(--border-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+#active-alerts .delete-alert {
+    background: none; border: none; color: var(--price-down); font-size: 1.2rem; cursor: pointer; opacity: 0.7;
+}
+#active-alerts .delete-alert:hover { opacity: 1; }
